@@ -8,16 +8,20 @@
 import Foundation
 import AppIntents
 
-struct BreakLoggerShortcuts: AppShortcutsProvider {
+struct ChangeLEDShortcut: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
-              intent: LogBreakIntent(),
+              intent: ChangeLEDIntent(),
               phrases: [
-                "Set my LEDs to \(\.$color)",
-                "Set my LEDs to \(\.$color) with \(.applicationName)",
+                "Use \(.applicationName)",
+                "Use \(.applicationName) to set the color to \(\.$color)",
               ],
-              shortTitle: "Complete Task",
+              shortTitle: "Set LEDs",
               systemImageName: "checkmark"
         )
+    }
+    
+    init() {
+        ChangeLEDShortcut.updateAppShortcutParameters()
     }
 }

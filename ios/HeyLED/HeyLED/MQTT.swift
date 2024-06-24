@@ -11,6 +11,7 @@ import Foundation
 import CocoaMQTT
 
 let mqtt5 = MQTT()
+let group = DispatchGroup()
 
 class MQTT {
     let mqtt5: CocoaMQTT5
@@ -35,24 +36,42 @@ class MQTT {
     }
     
     private func connect() {
+        // Enter the DispatchGroup
+        group.enter()
+        
         // If we are already connected, do nothing
+        // Leave the DispatchGroup
         if isConnected {
+            group.leave()
             return
         }
         
-        mqtt5.connect()
+        _ = mqtt5.connect()
         
-        // Infinitely loop until we are connected
-        while !isConnected {}
+        // async means it will run in the background
+        // sync ensures it is a synchronous task
+        DispatchQueue.global().async {
+            DispatchQueue.global().sync {
+                while !self.isConnected {
+                    usleep(1000)
+                }
+                
+                // Leave the DispatchGroup once connected
+                group.leave()
+            }
+        }
     }
     
     func publish(msg: String) {
         connect()
-            
-        let publishProperties = MqttPublishProperties()
-        // publishProperties.contentType = "JSON"
         
-        mqtt5.publish("ermwth", withString: msg, qos: .qos1, DUP: false, retained: false, properties: publishProperties)
+        // Once the DispatchGroup has been left by connect(), execute code
+        group.notify(queue: .main) {
+            let publishProperties = MqttPublishProperties()
+            // publishProperties.contentType = "JSON"
+            
+            self.mqtt5.publish("ermwth", withString: msg, qos: .qos1, DUP: false, retained: false, properties: publishProperties)
+        }
     }
 }
 

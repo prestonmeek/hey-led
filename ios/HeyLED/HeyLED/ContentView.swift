@@ -14,15 +14,15 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             
-            Text("Hello, world!")
+            Text("Hey LED")
             
-            Button("Publish message") {
+            Button("Publish test message") {
                 mqtt5.publish(msg: "hi!")
             }
         }
         .padding()
         .onAppear() {
-            BreakLoggerShortcuts.updateAppShortcutParameters()
+            ChangeLEDShortcut.updateAppShortcutParameters()
         }
     }
 }

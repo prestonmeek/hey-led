@@ -9,15 +9,10 @@ import AppIntents
 import SwiftUI
 
 // TODO: https://github.com/SwiftyAlex/Samples/blob/main/wwdc22/macchiato/macchiato/Model/Coffee.swift
-let colorStore = [
-    ColorEntity(name: "Red"),
-    ColorEntity(name: "Blue"),
-    ColorEntity(name: "Green")
-]
 
 struct ColorEntity: AppEntity {
-    let id: UUID
-    let name: String
+    var id: UUID
+    var name: String
     
     public init(name: String) {
         self.id = UUID.init()
@@ -33,30 +28,39 @@ struct ColorEntity: AppEntity {
     static var defaultQuery: ColorQuery = ColorQuery()
 }
 
+extension ColorEntity {
+    private static let colors = [
+        "Red", "Orange", "Yellow", "Green", "Blue", "Purple"
+    ]
+    
+    static let all = colors.map {
+        ColorEntity(name: $0)
+    }
+}
+
 struct ColorQuery: EntityStringQuery {
-    func entities(matching string: String) async throws -> [ColorEntity] {
-        colorStore.filter { string.lowercased().contains($0.name.lowercased()) }
+    func entities(for ids: [UUID]) async throws -> [ColorEntity] {
+        ColorEntity.all.filter { ids.contains($0.id) }
     }
     
-    func entities(for ids: [UUID]) async throws -> [ColorEntity] {
-        colorStore.filter { ids.contains($0.id) }
+    func entities(matching name: String) async throws -> [ColorEntity] {
+        return ColorEntity.all.filter { $0.name.contains(name) }
     }
     
     public func suggestedEntities() async throws -> [ColorEntity] {
-        colorStore
+        ColorEntity.all
     }
 }
 
-struct LogBreakIntent: AppIntent {
-    static let title: LocalizedStringResource = "Log a Break"
+struct ChangeLEDIntent: AppIntent {
+    static let title: LocalizedStringResource = "Set LEDs"
     
-    @Parameter(title: "Color", description: "The color of the LEDs")
+    @Parameter(title: "Color")
     var color: ColorEntity
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        mqtt5.publish(msg: color.name)
+        // mqtt5.publish(msg: color.name.lowercased())
 
-        return .result(dialog: "Set LEDs to \(color.name)")
+        return .result(dialog: "Set LEDs to \(color.name.lowercased())")
     }
 }
-
