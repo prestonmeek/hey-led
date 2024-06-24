@@ -59,7 +59,7 @@ struct ChangeLEDIntent: AppIntent {
     var color: ColorEntity
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        // mqtt5.publish(msg: color.name.lowercased())
+        mqtt5.publish(msg: color.name.lowercased())
 
         return .result(dialog: "Set LEDs to \(color.name.lowercased())")
     }
