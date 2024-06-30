@@ -22,7 +22,7 @@ struct ContentView: View {
         }
         .padding()
         .onAppear() {
-            ChangeLEDShortcut.updateAppShortcutParameters()
+            Shortcuts.updateAppShortcutParameters()
         }
     }
 }

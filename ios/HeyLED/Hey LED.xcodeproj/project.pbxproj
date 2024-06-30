@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0E8B94B4629FFF5CE170DDE8 /* Pods_HeyLED.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0864FBAB3AF7F1846181AAF /* Pods_HeyLED.framework */; };
+		960E3B792C31A0F000BEBC50 /* TurnLEDOffIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E3B782C31A0F000BEBC50 /* TurnLEDOffIntent.swift */; };
 		96D4B8452C20AF1800DEF88E /* HeyLEDApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B8442C20AF1800DEF88E /* HeyLEDApp.swift */; };
 		96D4B8472C20AF1800DEF88E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B8462C20AF1800DEF88E /* ContentView.swift */; };
 		96D4B8492C20AF1900DEF88E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D4B8482C20AF1900DEF88E /* Assets.xcassets */; };
 		96D4B84C2C20AF1900DEF88E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D4B84B2C20AF1900DEF88E /* Preview Assets.xcassets */; };
 		96D4B8532C20B2FD00DEF88E /* MQTT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B8522C20B2FD00DEF88E /* MQTT.swift */; };
 		96D4B85B2C20C83500DEF88E /* ChangeLEDIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B85A2C20C83500DEF88E /* ChangeLEDIntent.swift */; };
-		96D4B85D2C20CD1200DEF88E /* ChangeLEDShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B85C2C20CD1200DEF88E /* ChangeLEDShortcut.swift */; };
+		96D4B85D2C20CD1200DEF88E /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4B85C2C20CD1200DEF88E /* Shortcuts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6041A6E733455F9A0B611F4B /* Pods-HeyLED.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyLED.debug.xcconfig"; path = "Target Support Files/Pods-HeyLED/Pods-HeyLED.debug.xcconfig"; sourceTree = "<group>"; };
 		7D051C62D03F4F52C44372A8 /* Pods-HeyLED.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyLED.release.xcconfig"; path = "Target Support Files/Pods-HeyLED/Pods-HeyLED.release.xcconfig"; sourceTree = "<group>"; };
+		960E3B782C31A0F000BEBC50 /* TurnLEDOffIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnLEDOffIntent.swift; sourceTree = "<group>"; };
 		96D4B8412C20AF1800DEF88E /* Hey LED.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hey LED.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D4B8442C20AF1800DEF88E /* HeyLEDApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeyLEDApp.swift; sourceTree = "<group>"; };
 		96D4B8462C20AF1800DEF88E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,7 +30,7 @@
 		96D4B8522C20B2FD00DEF88E /* MQTT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTT.swift; sourceTree = "<group>"; };
 		96D4B8582C20C80700DEF88E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		96D4B85A2C20C83500DEF88E /* ChangeLEDIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLEDIntent.swift; sourceTree = "<group>"; };
-		96D4B85C2C20CD1200DEF88E /* ChangeLEDShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLEDShortcut.swift; sourceTree = "<group>"; };
+		96D4B85C2C20CD1200DEF88E /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		D0864FBAB3AF7F1846181AAF /* Pods_HeyLED.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeyLED.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,8 +98,9 @@
 		96D4B85E2C20CD9900DEF88E /* Intents */ = {
 			isa = PBXGroup;
 			children = (
+				96D4B85C2C20CD1200DEF88E /* Shortcuts.swift */,
 				96D4B85A2C20C83500DEF88E /* ChangeLEDIntent.swift */,
-				96D4B85C2C20CD1200DEF88E /* ChangeLEDShortcut.swift */,
+				960E3B782C31A0F000BEBC50 /* TurnLEDOffIntent.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -227,8 +230,9 @@
 				96D4B8472C20AF1800DEF88E /* ContentView.swift in Sources */,
 				96D4B85B2C20C83500DEF88E /* ChangeLEDIntent.swift in Sources */,
 				96D4B8452C20AF1800DEF88E /* HeyLEDApp.swift in Sources */,
+				960E3B792C31A0F000BEBC50 /* TurnLEDOffIntent.swift in Sources */,
 				96D4B8532C20B2FD00DEF88E /* MQTT.swift in Sources */,
-				96D4B85D2C20CD1200DEF88E /* ChangeLEDShortcut.swift in Sources */,
+				96D4B85D2C20CD1200DEF88E /* Shortcuts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

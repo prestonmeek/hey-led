@@ -30,7 +30,7 @@ struct ColorEntity: AppEntity {
 
 extension ColorEntity {
     private static let colors = [
-        "Red", "Orange", "Yellow", "Green", "Blue", "Purple"
+        "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "White"
     ]
     
     static let all = colors.map {
@@ -53,7 +53,7 @@ struct ColorQuery: EntityStringQuery {
 }
 
 struct ChangeLEDIntent: AppIntent {
-    static let title: LocalizedStringResource = "Set LEDs"
+    static let title: LocalizedStringResource = "Change LEDs"
     
     @Parameter(title: "Color")
     var color: ColorEntity
